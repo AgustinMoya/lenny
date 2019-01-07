@@ -1,12 +1,27 @@
 import React, { Component } from 'react'
 
 class Formulario extends Component {
+  // Ref, son para leer campos de un formulario
+  marcaRef = React.createRef()
+  yearRef = React.createRef()
+  planBasicoRef = React.createRef()
+  planCompletoRef = React.createRef()
+
+  cotizarSeguro = e => {
+    e.preventDefault()
+    // Obtener datos
+
+    // Crear objeto
+
+    // Enviar al comp principal
+  }
+
   render () {
     return (
-      <form className='cotizar-auto'>
+      <form className='cotizar-auto' onSubmit={this.cotizarSeguro}>
         <div className='campo'>
           <label>Marca</label>
-          <select name='marca'>
+          <select name='marca' ref={this.marcaRef}>
             <option value='americano'>Americano</option>
             <option value='europeo'>Europeo</option>
             <option value='asiatico'>Asiatico</option>
@@ -15,7 +30,7 @@ class Formulario extends Component {
 
         <div className='campo'>
           <label>Año</label>
-          <select name='year'>
+          <select name='year' ref={this.yearRef}>
             <option value='2018'>2018</option>
             <option value='2017'>2017</option>
             <option value='2016'>2016</option>
@@ -31,8 +46,20 @@ class Formulario extends Component {
         </div>
         <div className='campo'>
           <label>Plan:</label>
-          <input type='radio' name='plan' value='basico' /> Básico
-          <input type='radio' name='plan' value='completo' /> Completo
+          <input
+            type='radio'
+            ref={this.planBasicoRef}
+            name='plan'
+            value='basico'
+          />{' '}
+          Básico
+          <input
+            type='radio'
+            ref={this.planCompletoRef}
+            name='plan'
+            value='completo'
+          />{' '}
+          Completo
         </div>
 
         <button type='submit' className='boton'>
