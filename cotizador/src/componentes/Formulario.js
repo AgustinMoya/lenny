@@ -11,9 +11,19 @@ class Formulario extends Component {
     e.preventDefault()
     // Obtener datos
 
+    const plan = this.planBasicoRef.current.checked ? 'basico' : 'completo';
     // Crear objeto
+    const infoAuto = {
+      marca: this.marcaRef.current.value,
+      year:this.yearRef.current.value,
+      plan: plan 
+    }
 
     // Enviar al comp principal
+    this.props.cotizarSeguro(infoAuto)
+
+    //Reset form deja todo tal cual esta
+    //e.currentTarget.reset()
   }
 
   render () {
